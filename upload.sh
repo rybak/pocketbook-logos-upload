@@ -44,6 +44,9 @@ fi
 if [[ $# -gt 0 ]]
 then
     case "$1" in
+	"help" )
+		usage
+		;;
     "list" )
         list
         ;;
