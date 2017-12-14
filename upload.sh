@@ -23,7 +23,7 @@ Usage: upload.sh [list | upload | check | help ]
 
 list()
 {
-    find ./ -iregex "[^2]*.bmp" | grep -v 0
+    find "$1" -not -path './0*/*' -not -path './2012/*' -iname "*.bmp"
 }
 
 check()
