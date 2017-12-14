@@ -13,11 +13,11 @@ usage()
     echo "
 upload.sh
     Upload good logos to Pocketbook mounted on $HELPDEST
-Usage: upload.sh [list | upload | check | help ]
-    list   : list good logos
-    upload : upload good logos to pocketbook
-    check  : list logos on pocketbook
-    help   : show this text
+Usage: upload.sh [list [<DIR>] | upload | check | help ]
+    list [<DIR>]  : list good logos in current or specified folder
+    upload        : upload good logos to pocketbook
+    check         : list logos on pocketbook
+    help          : show this text
 "
 }
 
@@ -48,7 +48,12 @@ then
 		usage
 		;;
     "list" )
-        list
+		if [[ $# -eq 1 ]]
+		then
+			list ./
+		else
+			list "$2"
+		fi
         ;;
     "upload" )
         if $OK
