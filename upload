@@ -59,11 +59,13 @@ then
         if $OK
         then
             NOCLOBBER="-n"
-            if [ "$2" == "force" ];
+            if [[ $# -gt 1 ]] && [[ "$2" == "force" ]]
             then
                 NOCLOBBER=
             fi
-            list | xargs -ISRC cp SRC "$DEST" $NOCLOBBER
+			echo "Screensavers to upload:"
+			list ./
+            list ./ | xargs -ISRC cp SRC "$DEST" $NOCLOBBER
         else
             echo "Can not upload."
             exit
